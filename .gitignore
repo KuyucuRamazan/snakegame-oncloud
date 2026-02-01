@@ -1,0 +1,7 @@
+openai api key.txt 
+*.txt 
+.vs/ 
+bin/ 
+obj/ 
+packages/ 
+__pycache__/ 
