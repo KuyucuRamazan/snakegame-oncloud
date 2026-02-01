@@ -171,21 +171,21 @@ html_code = """
             
             if(Math.abs(deltaX) > Math.abs(deltaY)) {
                 // Yatay kaydırma
-                if(deltaX > 30 && velocityX !== -1) { velocityX = 1; velocityY = 0; }
-                else if(deltaX < -30 && velocityX !== 1) { velocityX = -1; velocityY = 0; }
+                if(deltaX > 15 && velocityX !== -1) { velocityX = 1; velocityY = 0; }
+                else if(deltaX < -15 && velocityX !== 1) { velocityX = -1; velocityY = 0; }
             } else {
                 // Dikey kaydırma
-                if(deltaY > 30 && velocityY !== -1) { velocityX = 0; velocityY = 1; }
-                else if(deltaY < -30 && velocityY !== 1) { velocityX = 0; velocityY = -1; }
+                if(deltaY > 15 && velocityY !== -1) { velocityX = 0; velocityY = 1; }
+                else if(deltaY < -15 && velocityY !== 1) { velocityX = 0; velocityY = -1; }
             }
         });
 
         function changeDirection(dir) {
             switch(dir) {
-                case 'UP': if(velocityY !== 1) { velocityX = 0; velocityY = -1; } break;
-                case 'DOWN': if(velocityY !== -1) { velocityX = 0; velocityY = 1; } break;
-                case 'LEFT': if(velocityX !== 1) { velocityX = -1; velocityY = 0; } break;
-                case 'RIGHT': if(velocityX !== -1) { velocityX = 1; velocityY = 0; } break;
+                case 'UP': if(velocityY !== 1) { velocityX = 0; velocityY = -1; gameLoop() } break;
+                case 'DOWN': if(velocityY !== -1) { velocityX = 0; velocityY = 1; gameLoop() } break;
+                case 'LEFT': if(velocityX !== 1) { velocityX = -1; velocityY = 0; gameLoop() } break;
+                case 'RIGHT': if(velocityX !== -1) { velocityX = 1; velocityY = 0; gameLoop()} break;
             }
         }
 
@@ -198,7 +198,7 @@ html_code = """
             scoreElement.innerText = "Skor: " + score;
             
             clearInterval(gameInterval);
-            gameInterval = setInterval(gameLoop, 1000/10);
+            gameInterval = setInterval(gameLoop, 1000/15);
         }
 
         function gameLoop() {
